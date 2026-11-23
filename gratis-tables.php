@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Gratis Tables
  * Plugin URI: https://github.com/juslintek/gratis-tables
- * Description: Data tables block. Sortable, searchable, responsive. Replaces TablePress ($49/yr).
+ * Description: Data tables block. Sortable, searchable, responsive.
  * Version: 1.0.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
