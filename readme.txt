@@ -2,13 +2,13 @@
 Contributors: juslintek
 Tags: tables, data table, sortable, responsive, csv
 Requires at least: 6.4
-Tested up to: 6.7
+Tested up to: 7.1
 Requires PHP: 8.1
 Stable tag: 1.0.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Sortable, searchable, responsive data tables block.
+Build sortable, searchable, and responsive data tables in WordPress with CSV import and keyboard-accessible column sorting.
 
 == Description ==
 
