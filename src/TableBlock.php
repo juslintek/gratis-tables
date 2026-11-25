@@ -22,7 +22,7 @@ final class TableBlock {
             ],
             'public'       => false,
             'show_ui'      => true,
-            'show_in_rest' => true,
+            'show_in_rest' => false,
             'menu_icon'    => 'dashicons-editor-table',
             'supports'     => ['title', 'custom-fields'],
         ]);
@@ -86,7 +86,13 @@ final class TableBlock {
         $html .= '</tbody></table></div>';
 
         if ($sortable || $searchable) {
-            $html .= '<script>' . self::js() . '</script>';
+            static $script_enqueued = false;
+            if (!$script_enqueued) {
+                $script_enqueued = true;
+                wp_register_script('gratis-tables', '', [], GRATIS_TABLES_VERSION, true);
+                wp_add_inline_script('gratis-tables', self::js());
+                wp_enqueue_script('gratis-tables');
+            }
         }
         return $html;
     }
@@ -114,8 +120,8 @@ final class TableBlock {
         if (empty($lines)) {
             return ['headers' => [], 'rows' => []];
         }
-        $headers = str_getcsv((string) array_shift($lines));
-        $rows    = array_map(static fn($l) => str_getcsv($l), $lines);
+        $headers = str_getcsv((string) array_shift($lines), ',', '"', '');
+        $rows    = array_map(static fn($l) => str_getcsv($l, ',', '"', ''), $lines);
         return ['headers' => $headers, 'rows' => $rows];
     }
 
